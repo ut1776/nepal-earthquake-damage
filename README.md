@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/status-research%20project-555" alt="Research project">
 </p>
 
-**RICHTER** is a reproducible machine-learning study of building damage from the 2015 Nepal earthquake. It uses structural, geographic, and socioeconomic building attributes to classify damage into three ordinal categories. The work emphasizes careful validation, interpretable feature construction, out-of-fold (OOF) evaluation, and submission integrity—not just leaderboard optimization.
+**RICHTER** is a reproducible machine-learning study of building damage from the 2015 Nepal earthquake. It uses structural, geographic, and socioeconomic building attributes to classify damage into three ordinal categories. The work emphasizes careful validation, interpretable feature construction, out-of-fold (OOF) evaluation, and submission integrity—not just leaderboard optimization. The full executed notebook is available at [Notebook/richter-earthquake-damage-prediction.ipynb](Notebook/richter-earthquake-damage-prediction.ipynb).
 
 > **Scope note:** This is a data-science research project. Its predictions are not engineering assessments, building inspections, or a life-safety decision tool.
 
@@ -72,7 +72,7 @@ The majority-class accuracy baseline is 56.89%. Because the competition's primar
 1. **Data audit** — inspect dimensions, identifiers, target distribution, missingness, and duplicate records.
 2. **Geographic and structural exploration** — examine damage patterns across building characteristics and geographic levels.
 3. **Feature engineering** — create age, building geometry, floor, and structural-system features.
-4. **Model comparison** — evaluate traditional, movement/structural, and combined feature sets where applicable to the experiment.
+4. **Model comparison** — evaluate the original and structural-interaction LightGBM candidates; screen saved CatBoost, LightGBM, and XGBoost OOF predictions without retraining.
 5. **Cross-validation** — use five-fold out-of-fold evaluation to compare candidate LightGBM configurations.
 6. **Probability blending** — compare original and structural-interaction predictions using OOF probabilities.
 7. **Submission audit** — verify schema, row count, identifier uniqueness and order, valid classes, missing values, and prediction consistency.
@@ -155,7 +155,7 @@ These experiments are retained as comparisons, not evidence that the selected mo
 
 The analysis was developed in a Kaggle notebook environment using Python and common tabular machine-learning libraries, including pandas, NumPy, and LightGBM. The experiment uses a fixed random seed of 42 and five-fold cross-validation for the reported model comparisons.
 
-To reproduce the work, obtain the competition data through the official DrivenData competition, place the files in the notebook's expected input location, and run the notebook sections in order. Competition data is not redistributed in this repository.
+To reproduce the work, open the [executed notebook](Notebook/richter-earthquake-damage-prediction.ipynb) in Kaggle or a compatible Jupyter environment. The setup cell downloads the four CSVs from this repository's `Dataset/` directory and installs any missing model libraries; network access is therefore required for a clean run. The notebook uses Python 3.13.18 metadata and a fixed random seed of 42. Run the sections in order so that saved OOF and checkpoint artifacts are available to later sections.\n\n**Dataset rights:** competition CSVs are currently present under `Dataset/` for this project's workflow. Their presence in this repository does not grant broader redistribution rights. Check the competition's terms and the original data license before reuse or redistribution. The repository's MIT license applies to project code and documentation, not automatically to third-party competition data.
 
 ## Repository structure
 
